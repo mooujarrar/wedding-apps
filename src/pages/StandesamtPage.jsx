@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import EnvelopeOpening from '../components/EnvelopeOpening'
+import StandesamtRsvpForm from '../components/StandesamtRsvpForm'
 import { calendarDays, standesamtMapUrl, standesamtTranslations } from '../data/events'
 
 export default function StandesamtPage() {
@@ -56,6 +57,7 @@ export default function StandesamtPage() {
         <div className="standesamt-weekdays">{copy.weekdays.map(day => <span key={day}>{day}</span>)}</div>
         <div className="standesamt-grid">{calendarDays.map((day, index) => <span key={index} className={day === 5 ? 'is-selected' : ''}>{day}</span>)}</div>
       </div>
+      <StandesamtRsvpForm copy={copy} />
       <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
         <button type="button" onClick={saveToCalendar} className="standesamt-button standesamt-button-primary"><span aria-hidden="true">+</span> {copy.save}</button>
         <a href={standesamtMapUrl} target="_blank" rel="noreferrer" className="standesamt-button standesamt-button-secondary"><span aria-hidden="true">↗</span> {copy.openAddress}</a>
