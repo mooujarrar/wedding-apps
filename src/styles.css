@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Dancing+Script:wght@500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  font-family: 'Arvo', Georgia, serif;
+  color: #3e2723;
+  background: #16351d;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.font-display { font-family: 'Dancing Script', cursive; }
+
+.invitation-page {
+  background: linear-gradient(rgba(8, 35, 20, .26), rgba(8, 35, 20, .26)), url('/assets/img/background.png') center / cover fixed no-repeat;
+}
+
+.save-date-page {
+  background: linear-gradient(rgba(20, 44, 18, .18), rgba(20, 44, 18, .18)), url('/assets/img/bg-2.jpg') bottom center / cover fixed no-repeat;
+}
+
+.invitation-opening { position: fixed; inset: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: #f5f5dc; transition: opacity 450ms ease 950ms; }
+.invitation-opening.is-finished { opacity: 0; pointer-events: none; }
+.opening-curtain { position: relative; z-index: 2; background: linear-gradient(90deg, #183c26, #2d681e 48%, #1b4c27); box-shadow: inset 0 0 35px rgba(0, 0, 0, .28); }
+.opening-curtain::after { content: ''; position: absolute; top: 0; bottom: 0; width: 18px; background: rgba(246, 214, 145, .75); box-shadow: 0 0 22px rgba(246, 214, 145, .65); }
+.opening-curtain-left { transform-origin: left center; animation: curtain-left-open 1.25s cubic-bezier(.76, 0, .24, 1) .18s both; }
+.opening-curtain-left::after { right: 0; }
+.opening-curtain-right { transform-origin: right center; animation: curtain-right-open 1.25s cubic-bezier(.76, 0, .24, 1) .18s both; }
+.opening-curtain-right::after { left: 0; }
+.opening-title { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; gap: .2em; color: #2d5016; font-family: 'Dancing Script', cursive; font-size: clamp(2.8rem, 8vw, 5.5rem); opacity: 0; animation: opening-title-show 1s ease .72s both; }
+.opening-title b { color: #8b4513; font-size: .6em; font-weight: 500; }
+.invitation-content { animation: invitation-content-reveal 900ms ease 900ms both; }
+
+.envelope-opening { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, #f7d8c9, #f4c7bd 52%, #d7e4d0); transition: opacity 350ms ease 350ms; }
+.envelope-opening.is-finished { opacity: 0; pointer-events: none; }
+.envelope-scene { position: relative; width: min(78vw, 390px); aspect-ratio: 1.48; overflow: visible; border: 3px solid #d47784; border-radius: 30px 36px 32px 38px; background: #e39aa3; perspective: 900px; filter: drop-shadow(0 24px 25px rgba(93, 58, 65, .22)); }
+.envelope-scene::before { content: ''; position: absolute; inset: 8px; z-index: 6; border: 2px solid #e19aa3; border-radius: 22px 28px 24px 30px; pointer-events: none; }
+.envelope-body, .envelope-front, .envelope-flap { position: absolute; z-index: 4; inset: 0; border-radius: 8px; }
+.envelope-body { inset: 9px; border-radius: 22px 28px 24px 30px; background: #f2c5b9; }
+.envelope-front { inset: 9px; z-index: 3; border-radius: 22px 28px 24px 30px; background: #f2c5b9; }
+.envelope-flap { inset: 9px 9px auto; z-index: 20; height: calc(100% - 18px); background: #e8b0a8; border-radius: 22px 28px 0 0; clip-path: polygon(0 0, 100% 0, 52% 74%, 50% 76%, 48% 74%); transform-origin: 50% 0%; }
+.envelope-paper { position: absolute; top: 60%; right: 8%; left: 8%; z-index: 4; display: none; height: 35%; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(184, 109, 117, .35); border-radius: 4px 4px 18px 18px; background: #fffdf9; color: #7b4e59; opacity: 0; text-align: center; transform: none; animation: none; }
+.envelope-opening.is-open .envelope-flap { animation: envelope-flap-mirror 900ms cubic-bezier(.65, 0, .35, 1) 0ms both; }
+.envelope-opening.is-open .envelope-front { z-index: 4; animation: envelope-front-open 500ms ease 0ms both; }
+.envelope-opening.is-open .envelope-paper { display: flex; animation: envelope-paper-rise 700ms cubic-bezier(.2, .8, .2, 1) 900ms both; }
+.envelope-paper span { font-family: 'Dancing Script', cursive; font-size: clamp(1.6rem, 6vw, 2.5rem); }
+.envelope-paper b { color: #b86d75; font-weight: 500; }
+.envelope-paper small { color: #a1616b; font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.envelope-prompt { position: absolute; right: 0; bottom: 16px; left: 0; z-index: 5; color: #a1616b; font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-align: center; text-transform: uppercase; transition: opacity 180ms ease; }
+.envelope-opening.is-open .envelope-prompt { opacity: 0; }
+
+@keyframes envelope-front-open { from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } to { clip-path: polygon(0 62%, 50% 82%, 100% 62%, 100% 100%, 0 100%); } }
+@keyframes envelope-paper-rise { from { opacity: 0; top: 60%; height: 35%; } to { opacity: 1; top: 22%; height: 66%; } }
+@keyframes envelope-flap-mirror { from { top: 9px; transform: rotateX(0deg); } to { top: 9px; transform: rotateX(180deg); } }
+
+@keyframes curtain-left-open { to { transform: translateX(-100%); } }
+@keyframes curtain-right-open { to { transform: translateX(100%); } }
+@keyframes opening-title-show { 0%, 25% { opacity: 0; transform: scale(.92); } 55%, 80% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.05); } }
+@keyframes invitation-content-reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+.standesamt-page { position: relative; isolation: isolate; background: #f7d8c9; background-image: radial-gradient(circle at 15% 15%, rgba(255, 255, 255, .7) 0 2px, transparent 3px), radial-gradient(circle at 80% 80%, rgba(190, 107, 111, .18) 0 2px, transparent 3px), linear-gradient(135deg, #f7d8c9, #f4c7bd 52%, #d7e4d0); background-size: 42px 42px, 58px 58px, auto; }
+.standesamt-card { border: 2px solid rgba(117, 74, 78, .35); border-radius: 34px; background: rgba(255, 250, 244, .91); box-shadow: 0 26px 70px rgba(93, 58, 65, .25), inset 0 0 0 8px rgba(255, 255, 255, .38); animation: standesamt-enter 800ms ease both; }
+.standesamt-card::before, .standesamt-card::after { content: ''; position: absolute; width: 90px; height: 90px; border: 2px solid rgba(194, 119, 124, .5); border-radius: 48% 52% 42% 58%; }
+.standesamt-card::before { top: -38px; left: -32px; transform: rotate(30deg); }
+.standesamt-card::after { right: -34px; bottom: -42px; transform: rotate(-28deg); }
+.standesamt-language { position: absolute; top: 18px; right: 20px; z-index: 2; border: 1px solid rgba(184, 109, 117, .45); border-radius: 999px; background: rgba(255, 250, 244, .8); padding: 6px 10px; color: #a1616b; font-size: .68rem; font-weight: 700; }
+.standesamt-language span { color: #526b58; letter-spacing: .08em; }
+.standesamt-language:hover { background: #fff; }
+.standesamt-ribbon { display: inline-block; border-radius: 999px; background: #b86d75; padding: 6px 15px; color: #fffaf4; font-size: .72rem; font-weight: 700; letter-spacing: .18em; }
+.standesamt-kicker { margin: 14px 0 0; color: #a1616b; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.standesamt-title { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 7rem); line-height: .9; }
+.standesamt-subtitle { color: #526b58; font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 5vw, 2.8rem); }
+.standesamt-subtitle span { color: #b86d75; padding: 0 .25em; }
+.standesamt-photo { position: relative; width: min(58vw, 250px); aspect-ratio: 2 / 3; margin-right: auto; margin-left: auto; overflow: hidden; border: 7px solid #fffaf4; border-radius: 24px 32px 26px 30px; box-shadow: 0 13px 25px rgba(123, 78, 89, .2); transform: rotate(-1.2deg); animation: standesamt-photo-float 5s ease-in-out infinite; }
+.standesamt-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(36, 84, 75, .02) 35%, rgba(123, 55, 70, .3)); pointer-events: none; }
+.standesamt-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.88) sepia(.08); }
+.standesamt-photo figcaption { position: absolute; right: 14px; bottom: 10px; z-index: 1; color: #fffaf4; font-family: 'Dancing Script', cursive; font-size: 1.35rem; text-shadow: 0 1px 5px rgba(63, 45, 54, .5); }
+.standesamt-orbit { display: grid; position: relative; place-items: center; width: 112px; height: 112px; margin: 22px auto 0; border: 2px dashed #b86d75; border-radius: 50%; color: #7b4e59; transform: rotate(-8deg); animation: standesamt-float 4s ease-in-out infinite; }
+.standesamt-orbit span { font-size: 2rem; font-weight: 700; line-height: 1; }
+.standesamt-orbit b { position: absolute; bottom: 18px; font-size: .7rem; letter-spacing: .25em; }
+.standesamt-orbit i { position: absolute; top: 9px; right: 11px; width: 10px; height: 10px; border-radius: 50%; background: #d59b65; }
+.standesamt-details { color: #526b58; }
+.standesamt-details > div { border: 1px solid rgba(184, 109, 117, .35); border-radius: 18px; background: rgba(255, 255, 255, .65); padding: 14px 12px; }
+.standesamt-details strong, .standesamt-details a { display: block; font-size: .88rem; line-height: 1.45; }
+.standesamt-details a { color: #a1616b; text-decoration: underline; text-underline-offset: 3px; }
+.standesamt-label { display: block; margin-bottom: 4px; color: #b86d75; font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.standesamt-calendar { border-radius: 18px; background: #fffdf9; padding: 13px 15px 12px; color: #7b4e59; text-align: left; box-shadow: 0 8px 20px rgba(123, 78, 89, .08); }
+.standesamt-calendar > div:first-child { font-family: 'Dancing Script', cursive; font-size: 1.45rem; font-weight: 700; }
+.standesamt-calendar small { color: #b86d75; font-family: 'Arvo', Georgia, serif; font-size: .63rem; letter-spacing: .1em; }
+.standesamt-weekdays, .standesamt-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+.standesamt-weekdays { margin-top: 10px; color: #a1616b; font-size: .62rem; font-weight: 700; }
+.standesamt-grid { gap: 4px; margin-top: 4px; color: #526b58; font-size: .78rem; }
+.standesamt-grid span { display: grid; min-height: 27px; place-items: center; }
+.standesamt-grid .is-selected { border-radius: 50%; background: #b86d75; color: #fff; font-weight: 700; }
+.standesamt-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; padding: 12px 18px; font-size: .78rem; font-weight: 700; transition: transform 180ms ease, box-shadow 180ms ease; }
+.standesamt-button:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(123, 78, 89, .18); }
+.standesamt-button-primary { border: 0; background: #526b58; color: white; }
+.standesamt-button-secondary { border: 1px solid #b86d75; background: transparent; color: #a1616b; }
+.standesamt-note { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: 1.35rem; }
+.standesamt-sparkles span { position: absolute; z-index: -1; width: 11px; height: 11px; border-radius: 50%; background: #fff9df; box-shadow: 0 0 0 6px rgba(255, 249, 223, .25); animation: standesamt-float 3s ease-in-out infinite; }
+.standesamt-sparkles span:nth-child(1) { top: 12%; left: 12%; }
+.standesamt-sparkles span:nth-child(2) { top: 23%; right: 15%; animation-delay: -1s; }
+.standesamt-sparkles span:nth-child(3) { bottom: 16%; left: 18%; animation-delay: -2s; }
+.standesamt-sparkles span:nth-child(4) { right: 8%; bottom: 28%; animation-delay: -1.5s; }
+.standesamt-sparkles span:nth-child(5) { top: 10%; left: 50%; width: 7px; height: 7px; animation-delay: -.5s; }
+
+@keyframes standesamt-enter { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes standesamt-float { 50% { transform: translateY(-5px) rotate(-4deg); } }
+@keyframes standesamt-photo-float { 50% { transform: translateY(-7px) rotate(1.2deg); } }
+
+.sakura-petal {
+  position: fixed;
+  top: -2rem;
+  width: .7rem;
+  height: .45rem;
+  border-radius: 100% 0 100% 0;
+  background: #f7b5bb;
+  opacity: .75;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+@keyframes fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(360deg); } }
+@keyframes float { 50% { transform: translateY(-6px); } }
+@keyframes fade-in { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+
+.float-in { animation: float 4s ease-in-out infinite; }
+.fade-in { animation: fade-in 700ms ease both; }
+
+.calendar-days > span { display: grid; min-height: 1.4rem; place-items: center; }
+
+/* Keep the venue label compact and remove the redundant InfoWindow close control. */
+.gm-ui-hover-effect { display: none !important; }
+.gm-style-iw-chr { display: none !important; }
+.gm-style-iw-c { padding: 0 !important; border-radius: 6px !important; }
+.gm-style-iw-d { overflow: hidden !important; padding: 0 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  .invitation-opening { transition: none; }
+  .envelope-opening { transition: none; }
+}
