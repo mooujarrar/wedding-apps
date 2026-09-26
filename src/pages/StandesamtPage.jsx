@@ -50,7 +50,17 @@ export default function StandesamtPage() {
       <div className="standesamt-orbit" aria-hidden="true"><span>05</span><i /><b>JUN</b></div>
       <div className="standesamt-details mx-auto mt-5 grid max-w-lg gap-3 sm:grid-cols-2">
         <div><span className="standesamt-label">{copy.dateLabel}</span><strong>{copy.date}</strong><strong>{copy.time}</strong></div>
-        <div><span className="standesamt-label">{copy.locationLabel}</span><strong>{copy.location}</strong><a href={standesamtMapUrl} target="_blank" rel="noreferrer">Frankfurter Str. 97<br />53773 Hennef (Sieg)</a></div>
+        <div>
+          <span className="standesamt-label">{copy.locationLabel}</span>
+          <strong>{copy.location}</strong>
+          <a href={standesamtMapUrl} target="_blank" rel="noreferrer">Frankfurter Str. 97<br />53773 Hennef (Sieg)</a>
+          {copy.afterCeremony && (
+            <div className="mt-2">
+              <strong>{copy.afterCeremony}</strong>
+              <a href={copy.afterCeremonyLink} target="_blank" rel="noreferrer">{copy.afterCeremonyAddress}</a>
+            </div>
+          )}
+        </div>
       </div>
       <div className="standesamt-calendar mt-5">
         <div className="flex items-center justify-between"><span>{copy.month}</span><small>{copy.calendarDay}</small></div>
@@ -63,13 +73,6 @@ export default function StandesamtPage() {
         <a href={standesamtMapUrl} target="_blank" rel="noreferrer" className="standesamt-button standesamt-button-secondary"><span aria-hidden="true">↗</span> {copy.openAddress}</a>
       </div>
       <p className="standesamt-note mt-5">{copy.note}</p>
-      {copy.afterCeremony && (
-        <p className="standesamt-note mt-2">
-          <a href={copy.afterCeremonyLink} target="_blank" rel="noreferrer" className="underline decoration-[#a1616b] underline-offset-4">
-            {copy.afterCeremony}
-          </a>
-        </p>
-      )}
     </section>
   </main>
 }

@@ -70,7 +70,7 @@ button { cursor: pointer; }
 .standesamt-language span { color: #526b58; letter-spacing: .08em; }
 .standesamt-language:hover { background: #fff; }
 .standesamt-ribbon { display: inline-block; border-radius: 999px; background: #b86d75; padding: 6px 15px; color: #fffaf4; font-size: .72rem; font-weight: 700; letter-spacing: .18em; }
-.standesamt-kicker { margin: 14px 0 0; color: #a1616b; font-size: .92rem; font-weight: 700; letter-spacing: .08em; text-transform: none; }
+.standesamt-kicker { margin: 14px 0 0; color: #a1616b; font-size: .92rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .standesamt-title { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 7rem); line-height: .9; }
 .standesamt-subtitle { color: #526b58; font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 5vw, 2.8rem); }
 .standesamt-subtitle span { color: #b86d75; padding: 0 .25em; }
