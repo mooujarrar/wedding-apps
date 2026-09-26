@@ -70,7 +70,7 @@ button { cursor: pointer; }
 .standesamt-language span { color: #526b58; letter-spacing: .08em; }
 .standesamt-language:hover { background: #fff; }
 .standesamt-ribbon { display: inline-block; border-radius: 999px; background: #b86d75; padding: 6px 15px; color: #fffaf4; font-size: .72rem; font-weight: 700; letter-spacing: .18em; }
-.standesamt-kicker { margin: 14px 0 0; color: #a1616b; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.standesamt-kicker { margin: 14px 0 0; color: #a1616b; font-size: .92rem; font-weight: 700; letter-spacing: .08em; text-transform: none; }
 .standesamt-title { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 7rem); line-height: .9; }
 .standesamt-subtitle { color: #526b58; font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 5vw, 2.8rem); }
 .standesamt-subtitle span { color: #b86d75; padding: 0 .25em; }
@@ -99,7 +99,7 @@ button { cursor: pointer; }
 .standesamt-button:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(123, 78, 89, .18); }
 .standesamt-button-primary { border: 0; background: #526b58; color: white; }
 .standesamt-button-secondary { border: 1px solid #b86d75; background: transparent; color: #a1616b; }
-.standesamt-note { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: 1.35rem; }
+.standesamt-note { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: 1.35rem; text-transform: none; letter-spacing: 0; }
 .standesamt-rsvp { border: 1px solid rgba(184, 109, 117, .35); border-radius: 18px; background: rgba(255, 255, 255, .65); padding: 16px; text-align: left; }
 .standesamt-rsvp-title { color: #7b4e59; font-family: 'Dancing Script', cursive; font-size: 1.8rem; text-align: center; }
 .standesamt-rsvp-question { margin-top: 3px; color: #526b58; font-size: .88rem; font-weight: 700; text-align: center; }

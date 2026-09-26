@@ -63,6 +63,13 @@ export default function StandesamtPage() {
         <a href={standesamtMapUrl} target="_blank" rel="noreferrer" className="standesamt-button standesamt-button-secondary"><span aria-hidden="true">↗</span> {copy.openAddress}</a>
       </div>
       <p className="standesamt-note mt-5">{copy.note}</p>
+      {copy.afterCeremony && (
+        <p className="standesamt-note mt-2">
+          <a href={copy.afterCeremonyLink} target="_blank" rel="noreferrer" className="underline decoration-[#a1616b] underline-offset-4">
+            {copy.afterCeremony}
+          </a>
+        </p>
+      )}
     </section>
   </main>
 }
