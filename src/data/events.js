@@ -50,7 +50,7 @@ export const standesamtTranslations = {
   en: {
     langLabel: 'Deutsche Version',
     openPrompt: 'Tippen zum Öffnen · Tap to open',
-    kicker: 'A small ceremony, a great moment',
+    kicker: 'A small ceremony,\na great moment',
     title: 'Standesamt Hennef',
     dateLabel: 'When',
     date: 'Saturday, 05 June 2027',
