@@ -4,7 +4,7 @@ export default function OpeningCurtain() {
   const [isOpening, setIsOpening] = useState(true)
 
   useEffect(() => {
-    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 1500
+    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 3800
     const timer = window.setTimeout(() => setIsOpening(false), duration)
     return () => window.clearTimeout(timer)
   }, [])

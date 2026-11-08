@@ -1,5 +1,6 @@
 export const weddingDate = new Date('2027-06-18T00:00:00')
 export const venueUrl = 'https://www.google.com/maps?q=50.671868284110005,7.222807890730933'
+export const parkingUrl = 'https://www.google.com/maps/place/Parkplatz+Margarethenh%C3%B6he/@50.6761996,7.2470119,344m/data=!3m1!1e3!4m6!3m5!1s0x47beef623834e3bf:0x54698bcbb048905d!8m2!3d50.6764869!4d7.2487071!16s%2Fg%2F11dfsp36v_?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D'
 export const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Milchhäuschen+Königswinter'
 export const mapLocation = { lat: 50.6721661, lng: 7.2229812 }
 export const calendarDays = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]

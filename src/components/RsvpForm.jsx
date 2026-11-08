@@ -24,11 +24,19 @@ export default function RsvpForm() {
       setStatus('Something went wrong while sending your RSVP. Please try again.')
     }
   }
-  return <div className="rounded-2xl bg-[#f5f5dc]/90 p-5 text-left shadow-lg">
-    <h2 className="mb-4 font-display text-4xl text-[#2d5016]">Save the Date</h2>
-    <label className="mb-2 block text-sm font-bold" htmlFor="guest-count">Number of guests (including yourself)</label>
-    <div className="flex flex-wrap gap-2"><input id="guest-count" type="number" min="1" max="20" value={guestCount} onChange={event => setGuestCount(event.target.value)} className="w-28 rounded-lg border border-[#8b4513] bg-white px-3 py-2" /><button type="button" onClick={generateGuests} className="rounded-lg bg-[#228b22] px-4 py-2 font-bold text-white transition hover:bg-[#32cd32]">Generate RSVP form</button></div>
-    {guests.length > 0 && <div className="mt-5 overflow-x-auto"><table className="w-full min-w-130 border-collapse bg-white/80 text-sm"><thead className="bg-[#228b22] text-left text-white"><tr><th className="p-2">Name</th><th className="p-2">Attending</th><th className="p-2">Music wish</th></tr></thead><tbody>{guests.map((guest, index) => <tr key={index} className="border-b border-[#8b4513]/40"><td className="p-2"><input value={guest.name} onChange={event => updateGuest(index, 'name', event.target.value)} placeholder="Guest name" className="w-full rounded border p-2" /></td><td className="p-2"><select value={guest.attendance} onChange={event => updateGuest(index, 'attendance', event.target.value)} className="rounded border p-2"><option value="yes">Yes</option><option value="no">No</option></select></td><td className="p-2"><input value={guest.musicWish} onChange={event => updateGuest(index, 'musicWish', event.target.value)} placeholder="Optional" className="w-full rounded border p-2" /></td></tr>)}</tbody></table><button type="button" onClick={submitRsvp} className="mt-4 rounded-lg bg-[#2d5016] px-5 py-2 font-bold text-white">Submit RSVP</button></div>}
-    {status && <p className="mt-3 text-sm font-bold" role="status">{status}</p>}
-  </div>
+  return <section className="rsvp-panel">
+    <header className="rsvp-heading">
+      <h2 className="font-display">RSVP</h2>
+      <p>Let us know who will be joining us.</p>
+    </header>
+    <div className="rsvp-count">
+      <label className="rsvp-count-label" htmlFor="guest-count">Number of guests (including yourself)</label>
+      <div className="rsvp-count-controls">
+        <input id="guest-count" type="number" min="1" max="20" value={guestCount} onChange={event => setGuestCount(event.target.value)} className="rsvp-count-input" />
+        <button type="button" onClick={generateGuests} className="rsvp-action">Generate RSVP form</button>
+      </div>
+    </div>
+    {guests.length > 0 && <div className="rsvp-table-wrap"><table className="rsvp-guest-table"><thead><tr><th>Name</th><th>Attending</th><th>Music wish</th></tr></thead><tbody>{guests.map((guest, index) => <tr key={index}><td><input value={guest.name} onChange={event => updateGuest(index, 'name', event.target.value)} placeholder="Guest name" /></td><td><select value={guest.attendance} onChange={event => updateGuest(index, 'attendance', event.target.value)}><option value="yes">Yes</option><option value="no">No</option></select></td><td><input value={guest.musicWish} onChange={event => updateGuest(index, 'musicWish', event.target.value)} placeholder="Optional" /></td></tr>)}</tbody></table><button type="button" onClick={submitRsvp} className="rsvp-action rsvp-submit">Submit RSVP</button></div>}
+    {status && <p className="rsvp-status" role="status">{status}</p>}
+  </section>
 }
