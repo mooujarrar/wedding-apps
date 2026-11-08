@@ -21,7 +21,6 @@ button { cursor: pointer; }
 }
 
 @media (max-width: 767px) {
-  .invitation-page { background-position: left 48%; }
   .invitation-page--countdown .invitation-nav { position: static; margin-top: 12px; transform: none; }
 }
 
