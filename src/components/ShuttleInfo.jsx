@@ -1,4 +1,4 @@
-import { parkingUrl, venueUrl } from '../data/events'
+import { parkingUrl, shuttleBookingUrl, venueUrl } from '../data/events'
 
 export default function ShuttleInfo() {
   return <section className="shuttle-panel">
@@ -19,7 +19,6 @@ export default function ShuttleInfo() {
         </svg>
         <h3>Drive to the parking</h3>
         <a className="shuttle-map-link" href={parkingUrl} target="_blank" rel="noreferrer">Parkplatz Margarethenhöhe <span aria-hidden="true">↗</span></a>
-        <a className="shuttle-directions" href={parkingUrl} target="_blank" rel="noreferrer">Open parking in Google Maps</a>
       </article>
       <article className="shuttle-stop shuttle-stop--highlight">
         <span className="shuttle-stop-number">02</span>
@@ -36,8 +35,9 @@ export default function ShuttleInfo() {
         <h3>Catch the wedding shuttle</h3>
         <p className="shuttle-departure-label">Departures from the parking</p>
         <div className="shuttle-times" aria-label="Shuttle departure times">
-          <time>14:00</time><time>14:10</time><time>14:20</time>
+          <time>14:00</time><time>14:15</time><time>14:30</time><time>14:45</time>
         </div>
+        <a className="shuttle-map-link" href={shuttleBookingUrl} target="_blank" rel="noreferrer">Book your seat from here <span aria-hidden="true">↗</span></a>
       </article>
       <article className="shuttle-stop">
         <span className="shuttle-stop-number">03</span>

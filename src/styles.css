@@ -50,7 +50,7 @@ button { cursor: pointer; }
 .shuttle-map-link:hover, .shuttle-directions:hover { color: #a45e68; }
 .shuttle-directions { margin-top: 8px; color: #8d746b; font-size: .67rem; text-decoration: underline; text-underline-offset: 2px; }
 .shuttle-departure-label { margin: 0 0 10px; color: #766b64; font-size: .7rem; }
-.shuttle-times { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.shuttle-times { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 0 12px; }
 .shuttle-times time { border: 1px solid rgba(123, 78, 89, .24); border-radius: 999px; background: rgba(255, 255, 255, .78); padding: 6px 10px; color: #7b4e59; font-size: .73rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .shuttle-stop-note { margin: 0; color: #766b64; font-size: .7rem; line-height: 1.45; }
 .shuttle-reminder { margin: 18px 0 0; color: #776a62; font-size: .76rem; }
@@ -85,6 +85,17 @@ button { cursor: pointer; }
 .rsvp-guest-table input, .rsvp-guest-table select { width: 100%; min-width: 90px; border: 1px solid rgba(184, 109, 117, .4); border-radius: 6px; background: white; padding: 7px; color: #7b4e59; }
 .rsvp-submit { display: block; margin: 16px auto 0; }
 .rsvp-status { margin: 12px 0 0; color: #526b58; font-size: .85rem; font-weight: 700; text-align: center; }
+.rsvp-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 12px; }
+.add-guest-button { 
+  display: inline-block;
+  border: 1px solid rgba(123, 78, 89, .4);
+  border-radius: 8px;
+  background: #fffdfa; padding: 8px 14px;
+  color: #7b4e59;
+  font-size: .82rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
 
 @media (max-width: 767px) {
   .rsvp-panel { padding: 20px 14px; }
