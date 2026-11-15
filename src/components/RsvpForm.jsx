@@ -6,16 +6,17 @@ export default function RsvpForm() {
   const [guestCount, setGuestCount] = useState('3')
   const [guests, setGuests] = useState(Array.from({ length: 3 }, () => ({ name: '', attendance: 'yes', musicWish: '' })))
   const [status, setStatus] = useState('')
+  const namedGuests = guests.filter(guest => guest.name.trim())
   const updateGuest = (index, key, value) => setGuests(current => current.map((guest, guestIndex) => guestIndex === index ? { ...guest, [key]: value } : guest))
   const addGuestRow = () => {
     setGuests(current => [...current, { name: '', attendance: 'yes', musicWish: '' }])
     setGuestCount(current => (parseInt(current) + 1).toString())
   }
   const submitRsvp = async () => {
-    if (!guests.length) { setStatus('Generate the RSVP form first.'); return }
+    if (!namedGuests.length) { setStatus('Please enter at least one guest name.'); return }
     setStatus('Sending your RSVP...')
     try {
-      await addDoc(collection(db, 'rsvps'), { guests, timestamp: Timestamp.now(), wedding: 'Nina & Mohyiddine' })
+      await addDoc(collection(db, 'rsvps'), { guests: namedGuests.map(guest => ({ ...guest, name: guest.name.trim() })), timestamp: Timestamp.now(), wedding: 'Nina & Mohyiddine' })
       setStatus('Thank you for your RSVP. We will be in touch!')
     } catch (error) {
       console.error(error)
@@ -33,7 +34,7 @@ export default function RsvpForm() {
         <img src="/assets/img/emoji-add.svg" alt="" aria-hidden="true" width="36" height="36" />
       </button>
     </div>
-    <button type="button" onClick={submitRsvp} className="rsvp-action rsvp-submit">Submit RSVP</button>
+    <button type="button" onClick={submitRsvp} className="rsvp-action rsvp-submit" disabled={!namedGuests.length}>Submit RSVP</button>
     </div>}
     {status && <p className="rsvp-status" role="status">{status}</p>}
   </section>

@@ -78,6 +78,7 @@ button { cursor: pointer; }
 .rsvp-count-input { width: 96px; min-height: 42px; border: 1px solid rgba(184, 109, 117, .55); border-radius: 8px; background: white; padding: 8px 10px; color: #7b4e59; }
 .rsvp-action { border: 0; border-radius: 8px; background: #7b4e59; padding: 10px 16px; color: white; font-weight: 700; transition: background-color 160ms ease, transform 160ms ease; }
 .rsvp-action:hover { background: #68414c; transform: translateY(-1px); }
+.rsvp-action:disabled, .rsvp-action:disabled:hover { background: #9b858a; cursor: not-allowed; transform: none; }
 .rsvp-table-wrap { margin-top: 20px; overflow-x: auto; }
 .rsvp-guest-table { width: 100%; min-width: 520px; border-collapse: collapse; background: rgba(255, 255, 255, .75); font-size: .85rem; text-align: left; }
 .rsvp-guest-table thead { background: #7b4e59; color: white; }
@@ -244,19 +245,20 @@ button { cursor: pointer; }
 @keyframes standesamt-float { 50% { transform: translateY(-5px) rotate(-4deg); } }
 @keyframes standesamt-photo-float { 50% { transform: translateY(-7px) rotate(1.2deg); } }
 
-.sakura-petal {
+.floating-heart {
   position: fixed;
-  top: -2rem;
-  width: .7rem;
-  height: .45rem;
-  border-radius: 100% 0 100% 0;
-  background: #f7b5bb;
-  opacity: .75;
+  bottom: -2rem;
+  opacity: 0;
   pointer-events: none;
-  animation: fall linear infinite;
+  filter: drop-shadow(0 1px 2px rgba(40, 24, 31, .3));
+  animation: heart-rise linear infinite;
 }
 
-@keyframes fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(360deg); } }
+@keyframes heart-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(var(--scale)); }
+  10%, 90% { opacity: .95; }
+  100% { opacity: 0; transform: translate3d(var(--drift), -110vh, 0) scale(var(--scale)) rotate(var(--rotation)); }
+}
 @keyframes float { 50% { transform: translateY(-6px); } }
 @keyframes fade-in { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
 

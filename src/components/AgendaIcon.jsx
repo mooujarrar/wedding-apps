@@ -38,7 +38,9 @@ export default function AgendaIcon({ type }) {
       <ellipse cx="10.5" cy="29" rx="4.5" ry="3" transform="rotate(-18 10.5 29)" fill="#f1d8ce" stroke="#7b4e59" />
       <ellipse cx="26.5" cy="26" rx="4.5" ry="3" transform="rotate(-18 26.5 26)" fill="#dce4d8" stroke="#7b4e59" />
       <path d="M14 14 30 11" stroke="#bd9b61" />
-      <path d="M7 10V7m-2 4H2m7-6L7 3m26 20v-3m2 4h3m-7-7 2-2" stroke="#d9a8a1" />
+      <path d="M7 11V5c2.2-.3 3.3.8 2.4 2.5M34 22v-6c2.2-.3 3.3.8 2.4 2.5" stroke="#d9a8a1"/>
+      <ellipse cx="5.7" cy="11.5" rx="2.2" ry="1.4" transform="rotate(-20 5.7 11.5)" fill="#f1d8ce" stroke="#d9a8a1"/>
+      <ellipse cx="32.7" cy="22.5" rx="2.2" ry="1.4" transform="rotate(-20 32.7 22.5)" fill="#f1d8ce" stroke="#d9a8a1"/>
     </g>}
   </svg>
 }
